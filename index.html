@@ -12,13 +12,15 @@ put your text in here
 </p>
 
 <input id="textField" autofocus onchange>
-<p id="result">
+<p id="result"></p>
 
-</p>
+<button id="coppyButton">click to coppy</button>
+
 <script type="text/javascript">
 
 var textField = document.getElementById("textField");
 var result = document.getElementById("result");
+var coppyButton = document.getElementById("coppyButton");
 
 function inputHandler() {
 
@@ -56,6 +58,17 @@ result.innerText = newText;
 
 }
 textField.addEventListener('input', inputHandler);
+
+function coppyHandler() {
+    var range = document.createRange();
+    range.selectNode(result);
+    window.getSelection().removeAllRanges(); // clear current selection
+    window.getSelection().addRange(range); // to select text
+    document.execCommand("copy");
+    window.getSelection().removeAllRanges();// to deselect
+}
+
+coppyButton.addEventListener('click', coppyHandler);
 
 </script>
 
