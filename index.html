@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+
+<p>
+put your text in here
+</p>
+
+<input id="textField" autofocus onchange>
+<p id="result">
+
+</p>
+<script type="text/javascript">
+
+var textField = document.getElementById("textField");
+var result = document.getElementById("result");
+
+function inputHandler() {
+
+var text = textField.value;
+var newText = "";
+var upper;
+
+for (var i=0 ; i < text.length ; i++) {
+  var ch = text.charAt(i);
+  if (i%2 == 0) {
+    if (Math.random() < .5) {
+      ch = ch.toUpperCase();
+      upper = true;
+    } else {
+      ch = ch.toLowerCase();
+      upper = false;
+    }
+  } else {
+    if (upper) {
+      ch = ch.toLowerCase();
+    } else {
+      ch = ch.toUpperCase();
+    }
+  }
+  if (ch == "l" ) {
+    ch = ch.toUpperCase();
+  }
+  if (ch == "I") {
+    ch = ch.toLowerCase();
+  }
+  newText += ch;
+}
+
+result.innerText = newText;
+
+}
+textField.addEventListener('input', inputHandler);
+
+</script>
+
+</body>
+
+</html>
